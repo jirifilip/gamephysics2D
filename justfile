@@ -5,10 +5,10 @@ compile:
 	if (test-path build) { remove-item -recurse build }
 	new-item -itemtype directory build
 
-	conan install . --build=missing -s build_type=Debug
+	conan install . --output-folder=build --build=missing -s build_type=Debug -s compiler.cppstd=17
 	
-	cmake -S . -B build -D CMAKE_TOOLCHAIN_FILE='build/generators/conan_toolchain.cmake'
+	cmake -S . -B build --preset conan-default
 	cmake --build build --config Debug
 
-run:
+run: compile
 	./build/Debug/GamePhysics.exe
