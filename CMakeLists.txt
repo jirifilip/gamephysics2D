@@ -13,12 +13,6 @@ include_directories(${glfw3_INCLUDE_DIR})
 include_directories(${glad_INCLUDE_DIR})
 include_directories(${glm_INCLUDE_DIR})
 
-get_cmake_property(_variableNames VARIABLES)
-list (SORT _variableNames)
-foreach (_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
-endforeach()
-
 add_executable(GamePhysics src/main.cpp)
 
 target_link_libraries(
